@@ -4,10 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/0.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/rounded_box.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/rounded_corner.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/font/adamina.xml" value="0.1" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_first.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_first.xml" value="0.25343999226562525" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/rounded_box.xml" value="0.14739583333333334" />
       </map>
     </option>
   </component>
