@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstActivity">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginEnd="115dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="OneDia"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="65sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="149dp"
+        android:fontFamily="@font/adamina"
+        android:text="Welcome!"
+        android:textColor="@color/purple_500"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Button
+        android:id="@+id/email"
+        android:layout_width="241dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/adamina"
+        android:text="Sign Up with E-mail"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+
+    <Button
+        android:id="@+id/google"
+        android:layout_width="241dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/adamina"
+        android:text="Continue with Google"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="86dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="253dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/adamina"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_500"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/question"
+        app:layout_constraintTop_toBottomOf="@+id/google" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="176dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="265dp"
+        android:fontFamily="@font/adamina"
+        android:text="Already have an account?"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/google" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
