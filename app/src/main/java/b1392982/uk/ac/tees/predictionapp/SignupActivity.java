@@ -13,8 +13,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
@@ -34,6 +42,8 @@ public class SignupActivity extends AppCompatActivity {
     CheckBox checkPassword2;
     EditText confirmPassword;
     Button signUp;
+    FirebaseAuth fAuth;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +56,9 @@ public class SignupActivity extends AppCompatActivity {
         signUp.setOnClickListener(v -> confirmInput());
 
         email = findViewById(R.id.email);
-        
+        fAuth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressBar);
+
         password = findViewById(R.id.password);
         //using method checkbox to show or hide the password
         checkPassword = findViewById(R.id.checkpassword);
@@ -92,12 +104,12 @@ public class SignupActivity extends AppCompatActivity {
     private boolean validateConfirmPassword() {
         boolean confirmbool = false;
         String passwordInput = password.getText().toString();
-        String confirmInput = confirmPassword.getText().toString();
+        String confirmPasswordInput = confirmPassword.getText().toString();
         confirmPassword.setError(null);
         if (checkEmpty(confirmPassword)) {
             confirmPassword.setError("This field can't be empty.");
             confirmbool = true;
-        } else if (!confirmInput.equals(passwordInput)) {
+        } else if (!confirmPasswordInput.equals(passwordInput)) {
             confirmPassword.setError("Your password doesn't match.");
             confirmbool = true;
         }
@@ -122,22 +134,34 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-    //hide the keyboard when pressing any blank layout spaces
-    public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager)
-                getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-
-    }
 
     // open another page when everything is validated.
     private void confirmInput() {
         validateEmail();
         validatePassword();
-        if (!validateEmail() && !validatePassword() && !validateConfirmPassword()) {
+        validateConfirmPassword();
+        fireBaseRegiester();
+        progressBar.setVisibility(View.VISIBLE);
+        if (!validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()&& !fAuth.getCurrentUser().equals(null)) {
             startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+            finish();
         }
 
+    }
+
+    private void fireBaseRegiester(){
+        String emailInput = email.getText().toString();
+        String passwordInput = password.getText().toString();
+        fAuth.createUserWithEmailAndPassword(emailInput,passwordInput).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(SignupActivity.this,"User Created", Toast.LENGTH_SHORT).show();
+                }else{
+                     Toast.makeText(SignupActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT);
+                }
+            }
+        });
     }
 
 }
