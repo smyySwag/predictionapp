@@ -36,14 +36,11 @@ public class SplashActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         title.setAnimation(bottomAnim);
 
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run() {
-                /* Create an Intent that will start the FirstActivity. */
-                Intent intent = new Intent(SplashActivity.this,FirstActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            /* Create an Intent that will start the FirstActivity. */
+            Intent intent = new Intent(SplashActivity.this,FirstActivity.class);
+            startActivity(intent);
+            finish();
         }, SPLASH_SCREEN);
     }
 

@@ -1,5 +1,6 @@
 package b1392982.uk.ac.tees.predictionapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -7,9 +8,10 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
-
+    //pattern for password
     private static final Pattern PASSWORD_PATTERN = Pattern.compile(
             "^" + "(?=.*[0-9])" +
                     "(?=.*[a-z])" +
@@ -36,39 +38,27 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //for full screen
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_signup);
+
         signUp = findViewById(R.id.signUp);
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        signUp.setOnClickListener(v -> confirmInput());
 
-                confirmInput(v);
-            }
-        });
         email = findViewById(R.id.email);
+        
         password = findViewById(R.id.password);
-        confirmPassword = findViewById(R.id.confirmPassword);
+        //using method checkbox to show or hide the password
         checkPassword = findViewById(R.id.checkpassword);
-        checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-             checkbox(isChecked, password);
-            }
-        });
+        checkPassword.setOnCheckedChangeListener((buttonView, isChecked) -> checkbox(isChecked, password));
+
+        confirmPassword = findViewById(R.id.confirmPassword);
+        //using method checkbox to show or hide the password
         checkPassword2 = findViewById(R.id.checkpassword2);
-        checkPassword2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                checkbox(isChecked,confirmPassword);
-            }
-        });
+        checkPassword2.setOnCheckedChangeListener((buttonView, isChecked) -> checkbox(isChecked, confirmPassword));
     }
 
-    private boolean checkEmpty(EditText text) {
-        String str = text.getText().toString();
-        return TextUtils.isEmpty(str);
-    }
-
+    //validate email address
     private boolean validateEmail() {
         boolean emailbool = false;
         String emailInput = email.getText().toString();
@@ -83,7 +73,7 @@ public class SignupActivity extends AppCompatActivity {
         return emailbool;
     }
 
-
+    //validate password
     private boolean validatePassword() {
         boolean passwordbool = false;
         String passwordInput = password.getText().toString();
@@ -98,6 +88,7 @@ public class SignupActivity extends AppCompatActivity {
         return passwordbool;
     }
 
+    //validate if the retyped password is the same as the first password
     private boolean validateConfirmPassword() {
         boolean confirmbool = false;
         String passwordInput = password.getText().toString();
@@ -112,18 +103,35 @@ public class SignupActivity extends AppCompatActivity {
         }
         return confirmbool;
     }
-     private void checkbox ( boolean isChecked, EditText text) {
-         if (!isChecked) {
-             // show password
-             text.setTransformationMethod(PasswordTransformationMethod.getInstance());
-         } else {
-             // hide password
-             text.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-         }
-     }
 
 
-    private void confirmInput(View v) {
+    //check if the edit text fields are empty or not.
+    private boolean checkEmpty(EditText text) {
+        String str = text.getText().toString();
+        return TextUtils.isEmpty(str);
+    }
+
+    //check box to hide password or show them
+    private void checkbox(boolean isChecked, EditText text) {
+        if (!isChecked) {
+            // show password
+            text.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        } else {
+            // hide password
+            text.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        }
+    }
+
+    //hide the keyboard when pressing any blank layout spaces
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager)
+                getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+    }
+
+    // open another page when everything is validated.
+    private void confirmInput() {
         validateEmail();
         validatePassword();
         if (!validateEmail() && !validatePassword() && !validateConfirmPassword()) {
@@ -131,4 +139,5 @@ public class SignupActivity extends AppCompatActivity {
         }
 
     }
+
 }
