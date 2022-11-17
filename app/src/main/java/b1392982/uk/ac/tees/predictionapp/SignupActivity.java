@@ -53,7 +53,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         signUp = findViewById(R.id.signUp);
-        signUp.setOnClickListener(v -> confirmInput());
+        signUp.setOnClickListener(v -> fireBaseRegiester());
 
         email = findViewById(R.id.email);
         fAuth = FirebaseAuth.getInstance();
@@ -69,7 +69,11 @@ public class SignupActivity extends AppCompatActivity {
         checkPassword2 = findViewById(R.id.checkpassword2);
         checkPassword2.setOnCheckedChangeListener((buttonView, isChecked) -> checkbox(isChecked, confirmPassword));
     }
-
+    //hide keyboard when tapped the blank places
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
     //validate email address
     private boolean validateEmail() {
         boolean emailbool = false;
@@ -135,33 +139,48 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 
-    // open another page when everything is validated.
+  /*  // open another page when everything is validated.
     private void confirmInput() {
         validateEmail();
         validatePassword();
         validateConfirmPassword();
         fireBaseRegiester();
-        progressBar.setVisibility(View.VISIBLE);
-        if (!validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()&& !fAuth.getCurrentUser().equals(null)) {
-            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+
+        if (!validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()) {
+            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
             finish();
         }
 
-    }
+    }*/
 
-    private void fireBaseRegiester(){
+    private void fireBaseRegiester() {
+        validateEmail();
+        validatePassword();
+        validateConfirmPassword();
+
         String emailInput = email.getText().toString();
         String passwordInput = password.getText().toString();
-        fAuth.createUserWithEmailAndPassword(emailInput,passwordInput).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(SignupActivity.this,"User Created", Toast.LENGTH_SHORT).show();
-                }else{
-                     Toast.makeText(SignupActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT);
+
+        if (emailInput == null || emailInput.isEmpty() || emailInput.trim().isEmpty() || passwordInput == null || passwordInput.isEmpty() || passwordInput.trim().isEmpty()) {
+            Toast.makeText(SignupActivity.this, "Please fill the form", Toast.LENGTH_SHORT).show();
+        } else fAuth.createUserWithEmailAndPassword(emailInput, passwordInput).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful() && !validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()) {
+                            Toast.makeText(SignupActivity.this, "Please verify your email address.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                            finish();
+
+                        } else {
+                            Toast.makeText(SignupActivity.this,  task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                } else {
+                    Toast.makeText(SignupActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
+
+            });
     }
 
 }

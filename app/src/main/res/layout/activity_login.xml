@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:onClick="hideKeyboard"
     tools:context=".LoginActivity">
 
     <TextView
@@ -73,18 +74,43 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="132dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="139dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="245dp"
+        android:layout_width="148dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="169dp"
         android:background="@drawable/rounded_box"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resend" />
+
+    <CheckBox
+        android:id="@+id/checkpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="230dp"
+        android:text="Show Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <Button
+        android:id="@+id/resend"
+        android:layout_width="220dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
+        android:background="@android:color/transparent"
+        android:text="Resend Verification"
+        android:textAllCaps="false"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkpassword" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
