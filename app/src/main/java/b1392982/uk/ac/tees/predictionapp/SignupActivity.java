@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends ShareCode {
     //pattern for password
     private static final Pattern PASSWORD_PATTERN = Pattern.compile(
             "^" + "(?=.*[0-9])" +
@@ -52,8 +52,9 @@ public class SignupActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_signup);
 
+        //using fireBaseRegister method to validate and open the login page
         signUp = findViewById(R.id.signUp);
-        signUp.setOnClickListener(v -> confirmInput());
+        signUp.setOnClickListener(v -> fireBaseRegister());
 
         email = findViewById(R.id.email);
         fAuth = FirebaseAuth.getInstance();
@@ -123,45 +124,36 @@ public class SignupActivity extends AppCompatActivity {
         return TextUtils.isEmpty(str);
     }
 
-    //check box to hide password or show them
-    private void checkbox(boolean isChecked, EditText text) {
-        if (!isChecked) {
-            // show password
-            text.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        } else {
-            // hide password
-            text.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-        }
-    }
-
-
-    // open another page when everything is validated.
-    private void confirmInput() {
+//Create user in firebase by using email and password
+    private void fireBaseRegister() {
         validateEmail();
         validatePassword();
         validateConfirmPassword();
-        fireBaseRegiester();
-        progressBar.setVisibility(View.VISIBLE);
-        if (!validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()&& !fAuth.getCurrentUser().equals(null)) {
-            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
-            finish();
-        }
 
-    }
-
-    private void fireBaseRegiester(){
         String emailInput = email.getText().toString();
         String passwordInput = password.getText().toString();
-        fAuth.createUserWithEmailAndPassword(emailInput,passwordInput).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(SignupActivity.this,"User Created", Toast.LENGTH_SHORT).show();
-                }else{
-                     Toast.makeText(SignupActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT);
+
+        if (emailInput == null || emailInput.isEmpty() || emailInput.trim().isEmpty() || passwordInput == null || passwordInput.isEmpty() || passwordInput.trim().isEmpty()) {
+            Toast.makeText(SignupActivity.this, "Please fill the form", Toast.LENGTH_SHORT).show();
+        } else
+            fAuth.createUserWithEmailAndPassword(emailInput, passwordInput).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful() && !validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()) {
+                            Toast.makeText(SignupActivity.this, "Please verify your email address.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                            finish();
+
+                        } else {
+                            Toast.makeText(SignupActivity.this, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                } else {
+                    Toast.makeText(SignupActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
+
+            });
     }
 
 }
