@@ -7,7 +7,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ShareCode extends AppCompatActivity {
+public class
+ShareCode extends AppCompatActivity {
 
     //hide keyboard when tapped the blank spaces
     public void hideKeyboard(View view) {
