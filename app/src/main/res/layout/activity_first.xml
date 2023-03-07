@@ -7,7 +7,6 @@
     android:background="@drawable/background"
     tools:context=".FirstActivity">
 
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -15,7 +14,7 @@
         android:layout_marginStart="108dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="109dp"
-        android:fontFamily="@font/adamina"
+        android:fontFamily="@font/maiandragd"
         android:text="Cardiac Care"
         android:textColor="?android:textColorPrimary"
         android:textSize="34sp"
@@ -31,7 +30,7 @@
         android:layout_marginStart="149dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="149dp"
-        android:fontFamily="@font/adamina"
+        android:fontFamily="@font/maiandragd"
         android:text="Welcome!"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -40,35 +39,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/email"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="246dp"
         android:layout_height="58dp"
-
         android:layout_marginStart="85dp"
         android:layout_marginTop="65dp"
         android:layout_marginEnd="85dp"
-        android:fontFamily="@font/adamina"
+        android:fontFamily="@font/maiandragd"
         android:text="Sign Up with E-mail"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome"
+        app:strokeColor="@color/red" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/google"
-        android:layout_width="241dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="85dp"
-        android:fontFamily="@font/adamina"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="243dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="84dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/maiandragd"
         android:text="Continue with Google"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="15sp"
+        app:icon="@drawable/ic_google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -77,11 +80,11 @@
         android:id="@+id/login"
         android:layout_width="86dp"
         android:layout_height="47dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="67dp"
-        android:layout_marginBottom="253dp"
+        android:layout_marginBottom="267dp"
         android:background="@android:color/transparent"
-        android:fontFamily="@font/adamina"
+        android:fontFamily="@font/maiandragd"
         android:text="Log In"
         android:textAllCaps="false"
         android:textColor="@color/red"
@@ -96,13 +99,12 @@
         android:layout_width="176dp"
         android:layout_height="25dp"
         android:layout_marginStart="82dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="265dp"
-        android:fontFamily="@font/adamina"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="78dp"
+        android:fontFamily="@font/maiandragd"
         android:text="Already have an account?"
         android:textColor="?android:textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/login"
+        app:layout_constraintBottom_toTopOf="@+id/none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/google" />
 
@@ -111,13 +113,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="62dp"
-        android:layout_marginTop="67dp"
         android:layout_marginEnd="255dp"
         android:layout_marginBottom="151dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

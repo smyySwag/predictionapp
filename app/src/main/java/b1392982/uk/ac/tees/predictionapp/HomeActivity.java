@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     EditText  age, trestbps, chol, thalach, oldpeak, slope;
     TextView result;
     String gender_string, cp_string, fbs_string, thal_string, restecg_string, exang_string, ca_string;
-    String url = "https://heartdiseaseprediction.herokuapp.com/predict";
+    String url = "https://python-flask-api.azurewebsites.net/predict";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,12 +86,12 @@ public class HomeActivity extends AppCompatActivity {
 
         //changing values for cp
         if (spinner_cp.getAdapter().toString().equals("typical angina")){
-            cp_string = "1";
+            cp_string = "0";
         }else if (spinner_cp.getAdapter().toString().equals("atypical angina")){
-            cp_string = "2";
+            cp_string = "1";
         }else if (spinner_cp.getAdapter().toString().equals("non-anginal pain")){
-            cp_string = "3";
-        }else  cp_string = "4";
+            cp_string = "2";
+        }else  cp_string = "3";
 
         //for fbs
         ArrayAdapter<CharSequence> fbs_adapter = ArrayAdapter.createFromResource(this, R.array.fbs_array, R.layout.spinner_item);
@@ -182,11 +182,11 @@ public class HomeActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
-                                    String data = jsonObject.getString("heart disease");
+                                    String data = jsonObject.getString("heart_disease");
                                     if(data.equals("1")){
-                                        result.setText("You are likely to have heart disease");
+                                        startActivity(new Intent(HomeActivity.this, HeartdiseaseActivity.class));
                                     }else{
-                                        result.setText("You are not likely to have heart disease");
+                                        startActivity(new Intent(HomeActivity.this, NoheartdiseaseActivity.class));
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

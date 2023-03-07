@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".HomeActivity">
 
     <TextView
@@ -13,8 +14,12 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="235dp"
+        android:layout_marginBottom="8dp"
         android:text="Patient Information "
         android:textSize="16sp"
+        android:fontFamily="@font/maiandragd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/gender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,18 +29,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
         android:text="Gender"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info" />
+        android:fontFamily="@font/maiandragd"
+        app:layout_constraintBottom_toTopOf="@+id/gender_layout"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/gender_spinner"
+    <RelativeLayout
+        android:id="@+id/gender_layout"
         android:layout_width="166dp"
         android:layout_height="49dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_box"
+        android:layout_marginEnd="27dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_box"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/age_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender"></RelativeLayout>
+
+    <Spinner
+        android:id="@+id/gender_spinner"
+        android:layout_width="161dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender" />
 
@@ -55,7 +74,7 @@
         android:id="@+id/age_text"
         android:layout_width="162dp"
         android:layout_height="50dp"
-        android:layout_marginStart="27dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="28dp"
         android:background="@drawable/rounded_box"
@@ -70,18 +89,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         android:text="Chest Pain Type"
+        app:layout_constraintBottom_toTopOf="@+id/cp_spinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />
 
+    <RelativeLayout
+        android:id="@+id/cp_layout"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="21dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_box"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/chol"
+        app:layout_constraintStart_toStartOf="parent"></RelativeLayout>
+
     <Spinner
         android:id="@+id/cp_spinner"
-        android:layout_width="165dp"
-        android:layout_height="48dp"
+        android:layout_width="166dp"
+        android:layout_height="51dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_box"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cp" />
 
@@ -101,12 +133,14 @@
         android:id="@+id/trestbps_text"
         android:layout_width="165dp"
         android:layout_height="48dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="13dp"
         android:layout_marginEnd="28dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_box"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/thalassemia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cp_spinner"
         app:layout_constraintTop_toBottomOf="@+id/trestbps" />
@@ -145,16 +179,33 @@
         app:layout_constraintStart_toEndOf="@+id/thalassemia"
         app:layout_constraintTop_toBottomOf="@+id/trestbps_text" />
 
+    <RelativeLayout
+        android:id="@+id/fbs_layout"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="14dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_box"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/oldpeak"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/thal_layout"
+        app:layout_constraintTop_toBottomOf="@+id/fbs"></RelativeLayout>
+
     <Spinner
         android:id="@+id/fbs_spinner"
-        android:layout_width="110dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
+        android:layout_width="112dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/rounded_box"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/oldpeak"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/thalassemia_spinner"
+        app:layout_constraintStart_toEndOf="@+id/thal_layout"
         app:layout_constraintTop_toBottomOf="@+id/fbs" />
 
     <TextView
@@ -167,15 +218,28 @@
         app:layout_constraintStart_toEndOf="@+id/chol"
         app:layout_constraintTop_toBottomOf="@+id/cp_spinner" />
 
+    <RelativeLayout
+        android:id="@+id/thal_layout"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="9dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_box"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/exang"
+        app:layout_constraintStart_toEndOf="@+id/chol_text"
+        app:layout_constraintTop_toBottomOf="@+id/chol"></RelativeLayout>
+
     <Spinner
         android:id="@+id/thalassemia_spinner"
         android:layout_width="112dp"
         android:layout_height="45dp"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="11dp"
         android:layout_marginTop="14dp"
-        android:background="@drawable/rounded_box"
         app:layout_constraintStart_toEndOf="@+id/chol_text"
-        app:layout_constraintTop_toBottomOf="@+id/chol" />
+        app:layout_constraintTop_toBottomOf="@+id/thalassemia" />
 
     <TextView
         android:id="@+id/thalach"
@@ -202,22 +266,37 @@
 
     <TextView
         android:id="@+id/exang"
-        android:layout_width="115dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="114dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="9dp"
         android:text="Exercise induced angina"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/thalach"
-        app:layout_constraintTop_toBottomOf="@+id/thalassemia_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/thal_layout" />
+
+    <RelativeLayout
+        android:id="@+id/exang_layout"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="17dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_box"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/ca"
+        app:layout_constraintEnd_toStartOf="@+id/oldpeak_text"
+        app:layout_constraintStart_toEndOf="@+id/thalch_text"
+        app:layout_constraintTop_toBottomOf="@+id/exang"></RelativeLayout>
 
     <Spinner
         android:id="@+id/exang_spinner"
-        android:layout_width="111dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_box"
+        android:layout_width="109dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toEndOf="@+id/thalch_text"
         app:layout_constraintTop_toBottomOf="@+id/exang" />
 
@@ -226,19 +305,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="56dp"
         android:text="Oldpeak"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/exang"
-        app:layout_constraintTop_toBottomOf="@+id/fbs_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/fbs_layout" />
 
     <EditText
         android:id="@+id/oldpeak_text"
         android:layout_width="110dp"
         android:layout_height="45dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="28dp"
         android:background="@drawable/rounded_box"
         android:ems="10"
@@ -282,16 +361,31 @@
         app:layout_constraintStart_toEndOf="@+id/slope"
         app:layout_constraintTop_toBottomOf="@+id/oldpeak_text" />
 
+    <RelativeLayout
+        android:id="@+id/ca_layout"
+        android:layout_width="166dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="6dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_box"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/restecg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/slope_text"
+        app:layout_constraintTop_toBottomOf="@+id/ca"></RelativeLayout>
+
     <Spinner
         android:id="@+id/ca_spinner"
         android:layout_width="165dp"
         android:layout_height="48dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/rounded_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/slope_text"
         app:layout_constraintTop_toBottomOf="@+id/ca" />
+
 
     <TextView
         android:id="@+id/restecg"
@@ -303,7 +397,23 @@
         android:text="Resting electrocardiographic result (Restecg)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ca_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/ca_spinner" />#
+
+    <RelativeLayout
+        android:id="@+id/restecg_layout"
+        android:layout_width="321dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="9dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_box"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/predict"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restecg"></RelativeLayout>
 
     <Spinner
         android:id="@+id/restecg_spinner"
@@ -312,7 +422,6 @@
         android:layout_marginStart="46dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="47dp"
-        android:background="@drawable/rounded_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restecg" />
@@ -321,21 +430,25 @@
         android:id="@+id/predict"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="148dp"
-        android:text="Predict"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="162dp"
+        android:text="Done"
+        android:background="@drawable/rounded_box"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restecg_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/restecg_layout" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="20dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/predict"
         tools:layout_editor_absoluteX="53dp" />
 
 

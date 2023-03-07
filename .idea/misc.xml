@@ -11,8 +11,12 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/ic_settings.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/ic_sharp_settings_24.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/rounded_box.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/rounded_box_red.xml" value="0.2484375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/rounded_corner.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/drawable/spinner_box.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/font/adamina.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/font/font.xml" value="0.10740740740740741" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/font/maindra_gd.xml" value="0.2625" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_first.xml" value="0.25343999226562525" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_heartdisease.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_home.xml" value="0.25343999226562525" />
@@ -23,6 +27,8 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_splash.xml" value="0.25343999226562525" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/rounded_box.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/spinner_item.xml" value="0.15625" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/mipmap-anydpi-v26/ic_google.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/mipmap-anydpi-v26/ic_google_round.xml" value="0.14427083333333332" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2484375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2484375" />
         <entry key="..\:/Users/user/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.11510416666666666" />
