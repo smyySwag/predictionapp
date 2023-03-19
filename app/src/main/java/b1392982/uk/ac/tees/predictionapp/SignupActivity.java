@@ -136,12 +136,12 @@ public class SignupActivity extends ShareCode {
 
         if (emailInput == null || emailInput.isEmpty() || emailInput.trim().isEmpty() || passwordInput == null || passwordInput.isEmpty() || passwordInput.trim().isEmpty()) {
             Toast.makeText(SignupActivity.this, "Please fill the form", Toast.LENGTH_SHORT).show();
-        } else
+        } else if (!validateEmail() && !validatePassword()) {
             fAuth.createUserWithEmailAndPassword(emailInput, passwordInput).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     FirebaseUser firebaseUser = fAuth.getCurrentUser();
-                  //Enter User data into Realtime Database.
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(emailInput,passwordInput);
+                    //Enter User data into Realtime Database.
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(emailInput, passwordInput);
 
                     //Extracting user reference from database for registered users.
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
@@ -154,18 +154,21 @@ public class SignupActivity extends ShareCode {
                                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                                     finish();
 
-                                } else {
+                                } else if (task1.getException() != null) {
                                     Toast.makeText(SignupActivity.this, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
+                                } else {
+                                    Toast.makeText(SignupActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
                                 }
+
+
                             });
                         }
                     });
                 } else {
-                    Toast.makeText(SignupActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "The password is not strong enough", Toast.LENGTH_SHORT).show();
                 }
 
             });
+        }
     }
-
 }

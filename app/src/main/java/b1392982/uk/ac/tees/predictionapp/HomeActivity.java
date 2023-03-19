@@ -201,7 +201,7 @@ public class HomeActivity extends ShareCode {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(HomeActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HomeActivity.this, "something is wrong", Toast.LENGTH_SHORT).show();
                             }
                         }){
                     @Override

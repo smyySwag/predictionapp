@@ -79,4 +79,10 @@ public class FirstActivity extends AppCompatActivity {
         Intent intent = new Intent(FirstActivity.this, HomeActivity.class);
         startActivity(intent);
     }
+    
+    // This will clear the task stack and exit the app
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
 }
