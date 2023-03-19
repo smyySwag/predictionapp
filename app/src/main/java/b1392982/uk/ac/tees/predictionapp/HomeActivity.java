@@ -28,10 +28,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import extra_java_classes.NothingSelectedSpinnerAdapter;
+import extra_java_classes.ShareCode;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends ShareCode {
     Spinner spinner_cp, spinner_ca, spinner_fbs, spinner_thal, spinner_exang, spinner_restecg, spinner_gender;
-    Button predict;
+    Button predict, setting;
     EditText  age, trestbps, chol, thalach, oldpeak, slope;
     TextView result;
     String gender_string, cp_string, fbs_string, thal_string, restecg_string, exang_string, ca_string;
@@ -42,6 +43,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
+
+        setting = findViewById(R.id.setting);
+        setting.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, SettingActivity.class)));
 
         spinner_gender = findViewById(R.id.gender_spinner);
         spinner_cp = findViewById(R.id.cp_spinner);
@@ -60,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
 
         predict = findViewById(R.id.predict);
         result = findViewById(R.id.result);
+
 
         //for gender (sex)
         ArrayAdapter<CharSequence> gender_adapter = ArrayAdapter.createFromResource(this, R.array.gender_array, R.layout.spinner_item);
@@ -223,4 +228,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    // This will clear the task stack and exit the app
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
+
 }

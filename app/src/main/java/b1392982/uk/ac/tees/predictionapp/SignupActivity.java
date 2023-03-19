@@ -1,15 +1,10 @@
 package b1392982.uk.ac.tees.predictionapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
-import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -17,14 +12,20 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.regex.Pattern;
+
+import extra_java_classes.ReadWriteUserDetails;
+import extra_java_classes.ShareCode;
 
 public class SignupActivity extends ShareCode {
     //pattern for password
@@ -138,15 +139,26 @@ public class SignupActivity extends ShareCode {
         } else
             fAuth.createUserWithEmailAndPassword(emailInput, passwordInput).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
-                        if (task1.isSuccessful() && !validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()) {
-                            Toast.makeText(SignupActivity.this, "Please verify your email address.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                            finish();
+                    FirebaseUser firebaseUser = fAuth.getCurrentUser();
+                  //Enter User data into Realtime Database.
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(emailInput,passwordInput);
 
-                        } else {
-                            Toast.makeText(SignupActivity.this, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    //Extracting user reference from database for registered users.
+                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
+                    referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
+                                if (task1.isSuccessful() && !validateEmail() && !validatePassword() && !validateConfirmPassword() && !validateConfirmPassword()) {
+                                    Toast.makeText(SignupActivity.this, "Please verify your email address.", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                                    finish();
 
+                                } else {
+                                    Toast.makeText(SignupActivity.this, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
                         }
                     });
                 } else {

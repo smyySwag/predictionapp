@@ -23,7 +23,7 @@ public class FirstActivity extends AppCompatActivity {
     Button google;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
-    Button none;
+    Button none, none1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +39,6 @@ public class FirstActivity extends AppCompatActivity {
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this, gso);
 
-        none = findViewById(R.id.none);
-        none.setOnClickListener(view -> startActivity(new Intent(FirstActivity.this, HomeActivity.class)));
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
             navigateToHomeActivity();

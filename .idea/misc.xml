@@ -18,11 +18,15 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/font/font.xml" value="0.10740740740740741" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/font/maindra_gd.xml" value="0.2625" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_first.xml" value="0.25343999226562525" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_heartdisease.xml" value="0.15989583333333332" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_home.xml" value="0.25343999226562525" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_login.xml" value="0.25343999226562525" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_forget_password.xml" value="0.1390625" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_heartdisease.xml" value="0.25343999226562525" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_home.xml" value="0.33532934131736525" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_login.xml" value="0.19199999414062519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_maps.xml" value="0.38399998828125037" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_noheartdisease.xml" value="0.25343999226562525" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_setting.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_reset_password.xml" value="0.25343999226562525" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_rest_password.xml" value="0.20491803278688525" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_setting.xml" value="0.25343999226562525" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_signup.xml" value="0.25343999226562525" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/activity_splash.xml" value="0.25343999226562525" />
         <entry key="..\:/Users/user/AndroidStudioProjects/predictionapp/app/src/main/res/layout/rounded_box.xml" value="0.14739583333333334" />
