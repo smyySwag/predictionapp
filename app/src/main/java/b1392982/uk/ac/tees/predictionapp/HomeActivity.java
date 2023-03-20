@@ -38,6 +38,12 @@ public class HomeActivity extends ShareCode {
     String gender_string, cp_string, fbs_string, thal_string, restecg_string, exang_string, ca_string;
     String url = "https://python-flask-api.azurewebsites.net/predict";
 
+    // This will clear the task stack and exit the app
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -201,7 +207,7 @@ public class HomeActivity extends ShareCode {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(HomeActivity.this, "something is wrong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HomeActivity.this, "Error " + error.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }){
                     @Override
@@ -227,11 +233,6 @@ public class HomeActivity extends ShareCode {
                 queue.add(stringRequest);
             }
         });
-    }
-    // This will clear the task stack and exit the app
-    public void onBackPressed() {
-        super.onBackPressed();
-        finishAffinity();
     }
 
 }
