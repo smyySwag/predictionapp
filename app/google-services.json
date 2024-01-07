@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "979710054149",
+    "project_id": "health-care-98c61",
+    "storage_bucket": "health-care-98c61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979710054149:android:5d0401037fdeb94284316c",
+        "android_client_info": {
+          "package_name": "b1392982.uk.ac.tees.predictionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979710054149-lifdgiqdl1ahl801if99omnu9alt6h69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu0GkrSkjLH4oTYBISklp-7HEBgKvp4pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979710054149-lifdgiqdl1ahl801if99omnu9alt6h69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

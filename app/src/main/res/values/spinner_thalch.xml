@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="thalch_array">
+        <item>none</item>
+        <item>Obstructive</item>
+        <item>Non-obstructive</item>
+        <item>Spontaneous</item>
+    </string-array>
+</resources>

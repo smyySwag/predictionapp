@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="thal_array">
+        <item>normal</item>
+        <item>fixed defect</item>
+        <item>reversible defect</item>
+    </string-array>
+</resources>

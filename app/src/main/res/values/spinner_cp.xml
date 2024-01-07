@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="cp_array">
+    <item>typical angina</item>
+    <item>atypical angina</item>
+    <item>non-anginal pain</item>
+    <item>asymptomatic</item>
+</string-array>
+</resources>
